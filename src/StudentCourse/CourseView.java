@@ -82,7 +82,7 @@ public class CourseView {
         this.control.StudentGrade.setEditable(true);
     }
 
-    // initialize the columns inside og the table for the courses
+
     public void initCoursesTableColumns()
     {
         this.control.CourseID.setCellValueFactory(new PropertyValueFactory<>("CourseID"));

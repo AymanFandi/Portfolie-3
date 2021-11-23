@@ -4,7 +4,7 @@ public class Cbox {
     private final int ID;
     private final String name;
 
-    // create a CboxResource with id and name attributes
+    // create a Cbox with id and name attributes
     public Cbox(int id, String name) {
         this.ID = id;
         this.name = name;

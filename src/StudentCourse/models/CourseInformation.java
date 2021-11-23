@@ -16,7 +16,6 @@ public class CourseInformation {
         this.CourseAvg = new SimpleFloatProperty(CourseAvg);
     }
 
-    // setters and getters for the information about the course
 
     public int getCourseID()
     {
@@ -29,6 +28,7 @@ public class CourseInformation {
     }
 
     public String getCourseName()
+
     {
         return this.CourseName.get();
     }

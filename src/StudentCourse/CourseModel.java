@@ -18,12 +18,12 @@ public class CourseModel {
         this.url = url;
     }
 
-    // method for getting connection to the database
+
     public void connect() throws SQLException {
         connection = getConnection(url);
     }
 
-    // method for closing the connection to the database
+
     public void close() throws SQLException {
         if (connection != null)
             connection.close();
@@ -47,7 +47,7 @@ public class CourseModel {
         this.stmt = connection.createStatement();
     }
 
-    // SQL query to retrieve names of students from database
+
     public ArrayList<Cbox> SQLQueryStudentNames() {
         ArrayList<Cbox> StudentNames = new ArrayList<>();
         String sql = """
@@ -61,10 +61,10 @@ public class CourseModel {
         try {
             rs = stmt.executeQuery(sql);
             while (rs != null && rs.next()) {
-                // parsing the id to string
+
                 int id = Integer.parseInt(rs.getString(1));
                 String FullName = rs.getString(2);
-                // assigning to the arraylist a ComboBox object with both id and full name of the student
+
                 StudentNames.add(new Cbox(id, FullName));
             }
         } catch (SQLException e) {
@@ -73,7 +73,7 @@ public class CourseModel {
         return StudentNames;
     }
 
-    // SQL query to get all courses from database
+
     public ArrayList<Cbox> SQLQueryCourses() {
         ArrayList<Cbox> Courses = new ArrayList<>();
         String sql = "Select CourseID, c.Course_Name\n" +
@@ -91,7 +91,7 @@ public class CourseModel {
         return Courses;
     }
 
-    // create SQL query to retrieve data about the courses from the database
+
     public ArrayList<CourseInformation> SQLQueryCourse(int CourseID) {
         ArrayList<CourseInformation> Courses = new ArrayList<>();
         String sql = "Select sc.CourseID, c.Course_Name , CASE WHEN avg(sc.grade) IS NULL THEN 0 ELSE avg(sc.grade) END as average\n" +
@@ -112,7 +112,7 @@ public class CourseModel {
         return Courses;
     }
 
-    // create SQL query to retrieve data about the student courses from the database
+
     public ArrayList<StudentCourseInformation> SQLQueryStudentCourses(int StudentID) {
         ArrayList<StudentCourseInformation> courses = new ArrayList<>();
         String sql = "SELECT\n" +
@@ -141,7 +141,7 @@ public class CourseModel {
         return courses;
     }
 
-    // create SQL query to retrieve data about the student's average grade for a course from the database
+
     public float SQLQueryStudentCoursesAverage(int UserId) {
         String sql = "SELECT\n" +
                 "    CASE WHEN avg(sc.grade) IS NULL THEN 0 ELSE avg(sc.grade) END as 'Average'\n" +
